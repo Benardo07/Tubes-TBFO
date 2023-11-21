@@ -1,0 +1,47 @@
+
+
+
+
+
+
+
+
+
+S <html Z S BHtmlZ
+S > BHtml InHTML CHtmlBHtml
+
+InHTML <head CHtml InHTML BHeadCHtml
+InHTML > BHead InHead CHeadBHead
+InHTML <body CHtml InHTML BBodyCHtml
+InHTML > BBody InBody CBodyBBody
+
+InHead <title CHead InHead BTitleCHead
+InHead > BTitle InTitle CTitleBTitle
+InHead </head CHead InHead e
+InHead > BHead InHTML e
+InHead <script CHead InHead OScriptCHead
+InHead > OScript InScript CScriptOScript
+InHead src OScript InHead SourceOScript
+InHead = Source InHead Source
+InHead "str" Source InHead e
+InHead <link CHead InHead BLinkCHead
+InHead > BLink InLink CLinkBLink
+InHead Rel BLink InHead RelBLink
+
+
+InTitle </title CTitle InTitle e
+InTitle > BTitle InHead e
+InTitle STR CTitle InTitle CTitle
+
+InScript </script CScript InScript e
+InScript > OScript InHead e
+
+
+InLink </link CLink InLink e
+InLink > BLink InHead e
+
+InBody 
+
+
+
+InHTML <body CHtml 

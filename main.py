@@ -48,15 +48,18 @@ def main():
     with open(html_file, 'r') as file:
         token = []
         temp = ''
+        tempIsi = 'noStr'
         isInPetik = False
         for char in file.read():
             if isInPetik and char != '"':
-                temp += char
+                if(char != ' '):
+                    tempIsi = 'str'
+                
             elif char == '<':
                 if(temp != ''):
                     token.append(temp)
                     temp=''
-                token.append(char)
+                temp += char
             elif char == '>' :
                 if(temp != ''):
                     token.append(temp)
@@ -68,9 +71,12 @@ def main():
                     temp = ''
                 token.append(char)
             elif char == '"' and isInPetik:
+                temp += tempIsi
                 temp += char
                 token.append(temp)
                 temp =''
+                tempIsi = 'noStr'
+                isInPetik = False
             elif char == '"':
                 temp += char
                 isInPetik = True

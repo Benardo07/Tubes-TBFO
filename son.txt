@@ -92,13 +92,57 @@ InTR e = InTR e
 InTR e NOSTR InTR e
 InTR e id InTR e
 
-//Keluarkan
-InTD </td> CTD 
 -------------------------------
 //Input
-InBody input > InBody BInputCBody
+InBody <input CBody InBody BInputCBody
 //Global
 InBody id BInput InBody idBInput
 InBody rel BInput InBody relBInput
 InBody styles BInput InBody stylesBInput
-InBody > BInput InBody CInput
+InBody type BInput InBody Type
+InBody = type InBody =Type
+InBody "str" = InBody e
+InBody "nostr" = InBody e
+InBody > Type InBody e
+
+InForm <input CForm InForm BInputCForm
+//Global
+InForm id BInput InForm idBInput
+InForm rel BInput InForm relBInput
+InForm styles BInput InForm stylesBInput
+InFrom type BInput InForm Type
+InForm = type InForm =Type
+InForm "str" = InForm e
+InForm "nostr" = InForm e
+InForm > Type InForm e
+
+InBody <form CBody InBody BFORMCBody
+//Action
+InBody action BFORM InBody ACTBFORM
+InBody = ACT InBody =ACT
+InBody "str" = InBody e
+InBody "nostr" = InBody e
+InBody > ACT InForm CFORM 
+//cek kalau ACT top masih atas
+InBody method ACT InBody METHOD
+InBody = METHOD InBody =METHOD
+InBody "GET" = InBody e 
+InBody "POST" = InBody e
+InBody > METHOD InForm CFORM
+//Kalau mau hanya 
+InBody method BFORM InBody METHODBFORM
+InBody = METHOD InBody =METHOD
+InBody "GET" = InBody e 
+InBody "POST" = InBody e 
+//Method duluan
+InBody action METHOD InBody ACT
+InBody = ACT InBody =ACT
+InBody "str" = InBody e
+InBody "nostr = InBody e
+InBody > ACT InForm CFORM
+
+
+
+InForm </form CFORM InForm e
+InForm > BFORM InBody e
+

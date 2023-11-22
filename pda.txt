@@ -1,15 +1,15 @@
+S InHTML InHead InTitle InBody InScript InH1 InH2 InH3 InH4 InH5 InH6 InP inEm inAbbr inB inSmall inStrong
+<html <head <body <title <script <link <h1 <h2 <h3 <h4 <h5 <
+e
+S
+Z
+E
 
-
-
-
-
-
-
-
-
+# Start State 
 S <html Z S BHtmlZ
 S > BHtml InHTML CHtmlBHtml
 
+# HTML State
 InHTML <head CHtml InHTML BHeadCHtml
 InHTML > BHead InHead CHeadBHead
 InHTML <body CHtml InHTML BBodyCHtml
@@ -17,31 +17,357 @@ InHTML > BBody InBody CBodyBBody
 
 InHead <title CHead InHead BTitleCHead
 InHead > BTitle InTitle CTitleBTitle
+
 InHead </head CHead InHead e
 InHead > BHead InHTML e
-InHead <script CHead InHead OScriptCHead
-InHead > OScript InScript CScriptOScript
-InHead src OScript InHead SourceOScript
-InHead = Source InHead Source
-InHead "str" Source InHead e
+
+InHead <script CHead InHead BScriptCHead
+InHead > BScript InScript CScriptBScript
+InHead src BScript InHead SourceBScript
+InHead = Source InHead =Source
+InHead "str" = InHead STR=
+InHead e STR InHead e
+InHead e = InHead e
+InHead e Source InHead e
+
 InHead <link CHead InHead BLinkCHead
-InHead > BLink InLink CLinkBLink
-InHead Rel BLink InHead RelBLink
+InHead rel BLink InHead Rel
+InHead = Rel InHead =Rel
+InHead "str" = InHead e
+InHead "nostr" = InHead e
+InHead > Rel InHead e
+InHead href BLink InHead HrefBLink
+InHead = href BLink InHead =Href
+InHead "str" = InHead STR=
+InHead "nostr" = InHead NOSTR=
+
+
+InHead id BHead InHead idBHead
+InHead class BHead InHead ClassBHead
+InHead style BHead InHead StyleBHead
+InHead id BTitle InHead idBTitle
+InHead class BTitle InHead ClassBTitle
+InHead style BHead InHead StyleBTitle
+InHead id BLink InHead idBLink
+InHead class BLink InHead ClassBLink
+InHead style BLink InHead StyleBLink
+InHead id BScript InHead idBScript
+InHead class BScript InHead ClassBScript
+InHead style BScript InHead StyleBScript
+
+
+InHead = id InHead =id
+InHead "str" = InHead STR=
+InHead "nostr" = InHead NOSTR=
+InHead e STR InHead e
+InHead e NOSTR InHead e
+InHead e =  InHead e
+InHead e id InHead e
+
+InHead = Class InHead =Class
+InHead e Class InHead e
+InHead = Style InHead =Style
+InHead e Style InHead e
+
+
+InBody = id InBody =id
+InBody "str" = InBody STR=
+InBody "nostr" = InBody NOSTR=
+InBody e STR InBody e
+InBody e NOSTR InBody e
+InBody e =  InBody e
+InBody e id InBody e
+
+InBody = Class InBody =Class
+InBody e Class InBody e
+InBody = Style InBody =Style
+InBody e Style InBody e
+
 
 
 InTitle </title CTitle InTitle e
 InTitle > BTitle InHead e
-InTitle STR CTitle InTitle CTitle
+InTitle str CTitle InTitle CTitle
 
 InScript </script CScript InScript e
 InScript > OScript InHead e
 
 
-InLink </link CLink InLink e
-InLink > BLink InHead e
+InBody <h1 CBody InBody BH1CBody
+InBody id BH1 InBody idBH1
+InBody class BH1 InBody ClassBH1
+InBody style BH1 InBody StyleBH1
+InBody > BH1 InH1 CH1BH1
 
-InBody 
+InBody <h2 CBody InBody BH2CBody
+InBody id BH2 InBody idBH2
+InBody class BH2 InBody ClassBH2
+InBody style BH2 InBody StyleBH2
+InBody > BH2 InH2 CH2BH2
+
+InBody <h3 CBody InBody BH3CBody
+InBody id BH3 InBody idBH3
+InBody class BH3 InBody ClassBH3
+InBody style BH3 InBody StyleBH3
+InBody > BH3 InH3 CH3BH3
+
+InBody <h4 CBody InBody BH4CBody
+InBody id BH4 InBody idBH4
+InBody class BH4 InBody ClassBH4
+InBody style BH4 InBody StyleBH4
+InBody > BH4 InH4 CH4BH4
+
+InBody <h5 CBody InBody BH5CBody
+InBody id BH5 InBody idBH5
+InBody class BH5 InBody ClassBH5
+InBody style BH5 InBody StyleBH5
+InBody > BH5 InH5 CH5BH5
+
+InBody <h6 CBody InBody BH6CBody
+InBody id BH6 InBody idBH6
+InBody class BH6 InBody ClassBH6
+InBody style BH6 InBody StyleBH6
+InBody > BH6 InH6 CH6BH6
+
+InH1 str CH1 InH1 CH1
+InH1 </h1 CH1 InH1 e
+InH1 > BH1 InBody e
+
+InH2 str CH2 InH2 CH2
+InH2 </h2 CH2 InH2 e
+InH2 > BH2 InBody e
+
+InH3 str CH3 InH3 CH3
+InH3 </h3 CH3 InH3 e
+InH3 > BH3 InBody e
+
+InH4 str CH4 InH4 CH4
+InH4 </h4 CH4 InH4 e
+InH4 > BH4 InBody e
+
+InH5 str CH5 InH5 CH5
+InH5 </h5 CH5 InH5 e
+InH5 > BH5 InBody e
+
+InH6 str CH6 InH6 CH6
+InH6 </h6 CH6 InH6 e
+InH6 > BH6 InBody e
 
 
+InBody <p CBody InBody BPCBody
+InBody id BP InBody idBP
+InBody class BP InBody ClassBP
+InBody style BP InBody StyleBP
+InBody > BP InP CPBP
 
-InHTML <body CHtml 
+InP str CP InP CP
+InP </p CP InP e
+InP > BP InBody e
+
+InBody <br CBody InBody BRCBody
+InBody id BR InBody idBR
+InBody class BR InBody ClassBR
+InBody style BR InBody StyleBR
+InBody > BR InBody e
+
+#em
+InBody <em CBody InBody BEmCBody
+InBody id BEm InBody idBEm
+InBody class BEm InBody ClassBEm
+InBody style BEm InBody StyleBEm
+InBody > BEm inEm CEmBEm
+
+inEm <b CEm inEm BBCEm
+inEm id BB inEm idBB
+inEm class BB inEm ClassBB
+inEm style BB inEm StyleBB
+inEm > BB inB CBBB
+inEm <abbr CEm inEm BAbbrCEm
+inEm id BAbbr inEm idBAbbr
+inEm class BAbbr inEm ClassBAbbr
+inEm style BAbbr inEm StyleBAbbr
+inEm > BAbbr inAbbr CAbbrBAbbr
+inEm <strong CEm inEm BStrongCEm
+inEm id BStrong inEm idBStrong
+inEm class BStrong inEm ClassBStrong
+inEm style BStrong inEm StyleBStrong
+inEm > BStrong inStrong CStrongBStrong
+inEm <small CEm inEm BSmallCEm
+inEm id BSmall inEm idBSmall
+inEm class BSmall inEm ClassBSmall
+inEm style BSmall inEm StyleBSmall
+inEm > BSmall inSmall CSmallBSmall
+
+inEm str CEm inEm CEm
+inEm </em CEm inEm e
+inEm > BEm inEm e
+
+inEm e CBody InBody CBody
+inEm e CB inB CB
+inEm e CStrong inStrong CStrong
+inEm e CSmall inSmall CSmall
+inEm e CAbbr isAbbr CAbbr 
+
+#b
+InBody <b CBody InBody BBCBody
+InBody id BB InBody idBB
+InBody class BB InBody ClassBB
+InBody style BB InBody StyleBB
+InBody > BB inB CBBB
+
+inB <em CB inB BEmCB
+inB id BEm inB idBEm
+inB class BEm inB ClassBEm
+inB style BEm inB StyleBEm
+inB > BEm inEm CEmBEm
+inB <abbr CB inB BAbbrCB
+inB id BAbbr inB idBAbbr
+inB class BAbbr inB ClassBAbbr
+inB style BAbbr inB StyleBAbbr
+inB > BAbbr inAbbr CAbbrBAbbr
+inB <strong CB inB BStrongCB
+inB id BStrong inB idBStrong
+inB class BStrong inB ClassBStrong
+inB style BStrong inB StyleBStrong
+inB > BStrong inStrong CStrongBStrong
+inB <small CB inB BSmallCB
+inB id BSmall inB idBSmall
+inB class BSmall inB ClassBSmall
+inB style BSmall inB StyleBSmall
+inB > BSmall inSmall CSmallBSmall
+
+inB str CEm inB CEm
+inB </em CEm inB e
+inB > BEm inB e
+
+inB e CBody InBody CBody
+inB e CEm inEm CEm
+inB e CStrong inStrong CStrong
+inB e CSmall inSmall CSmall
+inB e CAbbr isAbbr CAbbr 
+
+#Abbr
+InBody <Abbr CBody InBody BAbbrCBody
+InBody id BAbbr InBody idBAbbr
+InBody class BAbbr InBody ClassBAbbr
+InBody style BAbbr InBody StyleBAbbr
+InBody > BAbbr inAbbr CAbbrBAbbr
+
+inAbbr <b CAbbr inAbbr BBCAbbr
+inAbbr id BB inAbbr idBB
+inAbbr class BB inAbbr ClassBB
+inAbbr style BB inAbbr StyleBB
+inAbbr > BB inB CBBB
+inAbbr <em CAbbr inAbbr BEmCAbbr
+inAbbr id BEm inAbbr idBEm
+inAbbr class BEm inAbbr ClassBEm
+inAbbr style BEm inAbbr StyleBEm
+inAbbr > BEm inEm CEmBEm
+inAbbr <strong CAbbr inAbbr BStrongCAbbr
+inAbbr id BStrong inAbbr idBStrong
+inAbbr class BStrong inAbbr ClassBStrong
+inAbbr style BStrong inAbbr StyleBStrong
+inAbbr > BStrong inStrong CStrongBStrong
+inAbbr <small CAbbr inAbbr BSmallCAbbr
+inAbbr id BSmall inAbbr idBSmall
+inAbbr class BSmall inAbbr ClassBSmall
+inAbbr style BSmall inAbbr StyleBSmall
+inAbbr > BSmall inSmall CSmallBSmall
+
+inAbbr str CEm inAbbr CEm
+inAbbr </em CEm inAbbr e
+inAbbr > BEm inAbbr e
+
+inAbbr e CBody InBody CBody
+inAbbr e CB inB CB
+inAbbr e CStrong inStrong CStrong
+inAbbr e CSmall inSmall CSmall
+inAbbr e CEm inEm CEm
+
+
+#Strong
+InBody <Strong CBody InBody BStrongCBody
+InBody id BStrong InBody idBStrong
+InBody class BStrong InBody ClassBStrong
+InBody style BStrong InBody StyleBStrong
+InBody > BStrong inStrong CStrongBStrong
+
+inStrong <b CStrong inStrong BBCStrong
+inStrong id BB inStrong idBB
+inStrong class BB inStrong ClassBB
+inStrong style BB inStrong StyleBB
+inStrong > BB inB CBBB
+inStrong <em CStrong inStrong BEmCStrong
+inStrong id BEm inStrong idBEm
+inStrong class BEm inStrong ClassBEm
+inStrong style BEm inStrong StyleBEm
+inStrong > BEm inEm CEmBEm
+inStrong <abbr CStrong inStrong BAbbrCStrong
+inStrong id BAbbr inStrong idBAbbr
+inStrong class BAbbr inStrong ClassBAbbr
+inStrong style BAbbr inStrong StyleBAbbr
+inStrong > BAbbr inAbbr CAbbrBAbbr
+inStrong <small CStrong inStrong BSmallCStrong
+inStrong id BSmall inStrong idBSmall
+inStrong class BSmall inStrong ClassBSmall
+inStrong style BSmall inStrong StyleBSmall
+inStrong > BSmall inSmall CSmallBSmall
+
+inStrong str CEm inStrong CEm
+inStrong </em CEm inStrong e
+inStrong > BEm inStrong e
+
+inStrong e CBody InBody CBody
+inStrong e CB inB CB
+inStrong e CAbbr inAbbr CAbbr
+inStrong e CSmall inSmall CSmall
+inStrong e CEm inEm CEm
+
+#Small
+InBody <Small CBody InBody BSmallCBody
+InBody id BSmall InBody idBSmall
+InBody class BSmall InBody ClassBSmall
+InBody style BSmall InBody StyleBSmall
+InBody > BSmall inSmall CSmallBSmall
+
+inSmall <b CSmall inSmall BBCSmall
+inSmall id BB inSmall idBB
+inSmall class BB inSmall ClassBB
+inSmall style BB inSmall StyleBB
+inSmall > BB inB CBBB
+inSmall <abbr CSmall inSmall BAbbrCSmall
+inSmall id BAbbr inSmall idBAbbr
+inSmall class BAbbr inSmall ClassBAbbr
+inSmall style BAbbr inSmall StyleBAbbr
+inSmall > BAbbr inAbbr CAbbrBAbbr
+inSmall <strong CSmall inSmall BStrongCSmall
+inSmall id BStrong inSmall idBStrong
+inSmall class BStrong inSmall ClassBStrong
+inSmall style BStrong inSmall StyleBStrong
+inSmall > BStrong inStrong CStrongBStrong
+inSmall <em CSmall inSmall BEmCSmall
+inSmall id BEm inSmall idBEm
+inSmall class BEm inSmall ClassBEm
+inSmall style BEm inSmall StyleBEm
+inSmall > BEm inEm CEmBEm
+
+inSmall str CEm inSmall CEm
+inSmall </em CEm inSmall e
+inSmall > BEm inSmall e
+
+inSmall e CBody InBody CBody
+inSmall e CB inB CB
+inSmall e CAbbr inAbbr CAbbr
+inSmall e CStrong inStrong CStrong
+inSmall e CEm inEm CEm
+
+InBody <hr CBody InBody HRCBody
+InBody id HR InBody idHR
+InBody class HR InBody ClassHR
+InBody style HR InBody StyleHR
+InBody > HR InBody e
+
+InBody <div CBody InBody BBodyCBody
+InBody > BBody InBody CBodyBBody
+InBody </div CBody InBody e
+InBody > BBody InBody e

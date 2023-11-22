@@ -50,21 +50,43 @@ def main():
         temp = ''
         tempIsi = 'noStr'
         isInPetik = False
+        isDalamKomentar = False
+        closetag = False
+        
         for char in file.read():
             if isInPetik and char != '"':
                 if(char != ' '):
-                    tempIsi = 'str'
-                
+                    tempIsi = 'str'  
+            elif isDalamKomentar and char == ' ' :
+                temp = ''
+            elif char == '-':
+                if isDalamKomentar:
+                    temp += char
+                else :
+                    temp += char
+                if(temp == "<!--"):
+                    isDalamKomentar = True
+                    token.append(temp)
+                    temp = ''             
             elif char == '<':
                 if(temp != ''):
-                    token.append(temp)
+                    token.append('str')
                     temp=''
                 temp += char
+                closetag = False
             elif char == '>' :
-                if(temp != ''):
-                    token.append(temp)
-                    temp=''
-                token.append(char)
+                if(isDalamKomentar):
+                    temp += char
+                    if(temp == "-->"):
+                        token.append(temp)
+                        temp = ''
+                        isDalamKomentar = False
+                else : 
+                    if(temp != ''):
+                        token.append(temp)
+                        temp=''
+                    token.append(char)
+                    closetag = True
             elif  char == "=":
                 if(temp != ''):
                     token.append(temp)
@@ -83,7 +105,9 @@ def main():
             elif  char != " " and char != "\n":
                 temp += char
             elif char == " ":
-                if(temp != ''):
+                if(closetag) and char != '\n' and char != ' ':
+                    temp  += char
+                elif not(closetag) and (temp != '') and not(isDalamKomentar):
                     token.append(temp)
                     temp = ''
 

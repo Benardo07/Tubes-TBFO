@@ -1,0 +1,104 @@
+InBody <table CBody InBody BTableCBody
+//Global untuk table
+InBody id BTable InBody idBTable
+InBody styles BTable InBody stylesBTable
+InBody rel BTable InBody relBTable
+InBody > Btable InTable CTableBTable
+
+//Mulai TR
+InTable <tr CTable InTable BTRCTable
+//Global tr
+InTable id BTR InTable idBTR
+InTable rel BTR InTable relBTR
+InTable styles BTR InTable stylesBTR
+InTable > BTR InTR CTRBTR
+InTR </tr CTR InTR e
+InTR > BTR InTable e
+
+//TD kalau langsung di table
+InTable <td CTable InTable BTDCTable
+//Global td
+InTable id BTD InTable idBTD    
+InTable rel BTD InTable relBTD
+InTable styles BTD InTable stylesBTD
+InTable > BTD InTD CTDBTD
+InTD </td CTD InTD e
+InTD > BTD InTD e
+InTD e CTable InTable CTable
+
+//TD kalau didalam TR
+InTR <td CTR InTR BTDCTR
+//Global td
+InTR id BTD InTR idBTD
+InTR rel BTD InTR relBTD
+InTR class BTD InTR classBTD
+//Closing TD
+InTR > BTD InTD CTDBTD
+InTD </td CTD InTD e
+InTD e CTR InTR CTR
+
+
+//TH Tabel
+InTable <th CTable InTable BTHCTable
+//Global tr
+InTable id BTH InTable idBTH
+InTable rel BTH InTable relBTH
+InTable styles BTH InTable stylesBTH
+//Closing TH
+InTable > BTH InTH CTHBTH
+//Keluarkan
+InTH </th CTH InTH e
+InTH e CTable InTable CTable
+
+//TH didalam TR
+InTR <th CTR InTR BTHCTR
+//Global variabel
+InTR id BTH InTR idBTH
+InTR rel BTH InTR relBTH
+InTR class BTH InTR classBTH
+//Closing TH
+InTR > BTH InTH CTHBTH
+//Keluarkan
+InTH </th CTH InTH e
+InTH > BTH InTH e
+InTH e CTR InTR CTR
+
+//Atribut dari Global variabel
+InBody "str" = InBody STR=
+InBody "nostr" = InBody NOSTR=
+InBody e STR InBody e
+InBody e NOSTR InBody e
+InBody e = InBody e
+InBody e id InBody e
+//Push Sama degan untuk masing masing global variabel
+InBody = id InBody =id
+InBody = styles InBody =styles
+InBody = class InBody =class
+
+//Atribut Global variabel jika masih dalam table
+InTable = id InTable =id
+InTable "str" = InTable STR=
+InTable "nostr" = InTable NOSTR=
+InTable e STR InTable e
+InTable e = InTable e
+InTable e NOSTR InTable e
+InTable e id InTable e
+
+InTR = id InTR =id
+InTR "str" = InTR STR=
+InTR "nostr" = InTR NOSTR=
+InTR e STR InTR e
+InTR e = InTR e
+InTR e NOSTR InTR e
+InTR e id InTR e
+
+//Keluarkan
+InTD </td> CTD 
+-------------------------------
+//Input
+InBody input > InBody BInputCBody
+//Global
+InBody id BInput InBody idBInput
+InBody rel BInput InBody relBInput
+InBody styles BInput InBody stylesBInput
+InBody > BInput InBody CInput

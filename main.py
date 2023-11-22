@@ -18,6 +18,8 @@
 
 import argparse
 import sys
+from parsePDA import parse
+from parsePDA import validate_tokens
 
 def main():
     parser = argparse.ArgumentParser(description="Process some files.")
@@ -48,7 +50,7 @@ def main():
     with open(html_file, 'r') as file:
         token = []
         temp = ''
-        tempIsi = 'noStr'
+        tempIsi = 'nostr'
         isInPetik = False
         isDalamKomentar = False
         closetag = False
@@ -97,7 +99,7 @@ def main():
                 temp += char
                 token.append(temp)
                 temp =''
-                tempIsi = 'noStr'
+                tempIsi = 'nostr'
                 isInPetik = False
             elif char == '"':
                 temp += char
@@ -115,6 +117,17 @@ def main():
         token.append(temp)
         temp = ''
     print(token)
+
+    transition = parse(text_file)
+    print(transition)
+
+    if(validate_tokens(token,transition,'S')):
+        print("Accepted")
+    else:
+        print("rejected")
+    
+
+
     # Rest of your script logic here
 
 if __name__ == "__main__":

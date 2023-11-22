@@ -5,16 +5,13 @@ S
 Z
 E
 
-# Start State 
+
 S <html Z S BHtmlZ
 S > BHtml InHTML CHtmlBHtml
-
-# HTML State
 InHTML <head CHtml InHTML BHeadCHtml
 InHTML > BHead InHead CHeadBHead
 InHTML <body CHtml InHTML BBodyCHtml
 InHTML > BBody InBody CBodyBBody
-
 InHead <title CHead InHead BTitleCHead
 InHead > BTitle InTitle CTitleBTitle
 
@@ -371,3 +368,118 @@ InBody <div CBody InBody BBodyCBody
 InBody > BBody InBody CBodyBBody
 InBody </div CBody InBody e
 InBody > BBody InBody e
+
+InBody <a CBody InBody BA,CBody
+InBody id BA InBody id,BA
+InBody class BA InBody Class,BA
+InBody style BA InBody Style,BA
+InBody href BA InBody Href,BA
+InBody = Href InBody =,Href 
+InBody e Href InBody e
+InBody > BA inA CA,BA
+
+inA str CA inA CA
+inA </a CA inA e
+inA > BA InBody e
+
+
+inEm str CEm inEm CEm
+inEm </em CEm inEm e
+inEm > Bem inEm e
+inEm e CTitle InTitle CTitle
+inEm e CScript InScript CScript
+inEm e CH1 InH1 CH1
+inEm e CH2 InH2 CH2
+inEm e CH3 InH3 CH3
+inEm e CH4 InH4 CH4
+inEm e CH5 InH5 CH5
+inEm e CH6 InH6 CH6
+inEm e CP InP CP
+inEm e CDiv InDiv CDiv
+inEm e CA InA CA
+inEm e CButton InButton CButton
+inEm e CInput InInput CInput
+inEm e CTr InTr CTr
+inEm e CTd InTd CTd
+inEm e CTh InTh CTh
+
+inB str CB inB CB
+inB </b CB inB e
+inB > BB inB e
+inB e CTitle InTitle CTitle
+inB e CScript InScript CScript
+inB e CH1 InH1 CH1
+inB e CH2 InH2 CH2
+inB e CH3 InH3 CH3
+inB e CH4 InH4 CH4
+inB e CH5 InH5 CH5
+inB e CH6 InH6 CH6
+inB e CP InP CP
+inB e CDiv InDiv CDiv
+inB e CA InA CA
+inB e CButton InButton CButton
+inB e CInput InInput CInput
+inB e CTr InTr CTr
+inB e CTd InTd CTd
+inB e CTh InTh CTh
+
+inAbbr str CAbbr inAbbr CAbbr
+inAbbr </abbr CAbbr inAbbr e
+inAbbr > BAbbr inAbbr e
+inAbbr e CTitle InTitle CTitle
+inAbbr e CScript InScript CScript
+inAbbr e CH1 InH1 CH1
+inAbbr e CH2 InH2 CH2
+inAbbr e CH3 InH3 CH3
+inAbbr e CH4 InH4 CH4
+inAbbr e CH5 InH5 CH5
+inAbbr e CH6 InH6 CH6
+inAbbr e CP InP CP
+inAbbr e CDiv InDiv CDiv
+inAbbr e CA InA CA
+inAbbr e CButton InButton CButton
+inAbbr e CInput InInput CInput
+inAbbr e CTr InTr CTr
+inAbbr e CTd InTd CTd
+inAbbr e CTh InTh CTh
+
+inStrong str CStrong inStrong CStrong
+inStrong </strong CStrong inStrong e
+inStrong > BStrong inStrong e
+inStrong e CTitle InTitle CTitle
+inStrong e CScript InScript CScript
+inStrong e CH1 InH1 CH1
+inStrong e CH2 InH2 CH2
+inStrong e CH3 InH3 CH3
+inStrong e CH4 InH4 CH4
+inStrong e CH5 InH5 CH5
+inStrong e CH6 InH6 CH6
+inStrong e CP InP CP
+inStrong e CDiv InDiv CDiv
+inStrong e CA InA CA
+inStrong e CButton InButton CButton
+inStrong e CInput InInput CInput
+inStrong e CTr InTr CTr
+inStrong e CTd InTd CTd
+inStrong e CTh InTh CTh
+
+inSmall str CSmall inSmall CSmall
+inSmall </small CSmall inSmall e
+inSmall > BSmall inSmall e
+inSmall e CTitle InTitle CTitle
+inSmall e CScript InScript CScript
+inSmall e CH1 InH1 CH1
+inSmall e CH2 InH2 CH2
+inSmall e CH3 InH3 CH3
+inSmall e CH4 InH4 CH4
+inSmall e CH5 InH5 CH5
+inSmall e CH6 InH6 CH6
+inSmall e CP InP CP
+inSmall e CDiv InDiv CDiv
+inSmall e CA InA CA
+inSmall e CButton InButton CButton
+inSmall e CInput InInput CInput
+inSmall e CTr InTr CTr
+inSmall e CTd InTd CTd
+inSmall e CTh InTh CTh
+

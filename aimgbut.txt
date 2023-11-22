@@ -1,0 +1,57 @@
+// img
+InBody <img CBody InBody BImgCBody
+// src
+InBody src BImg InBody Src
+InBody = Src InBody =Src
+InBody "str" = InBody e
+InBody > Src InBody e
+// alt
+InBody alt BImg InBody AltBImg
+InBody = Alt BImg InBody =Alt
+InBody "str" = InBody STR=
+InBody "nostr" = InBody NOSTR=
+// global attribute
+InBody id BImg InBody idBImg
+InBody class BImg InBody ClassImg
+InBody style BImg InBody StyleBImg
+
+// button
+InBody <button CBody InBody BButtonCBody
+InBody > BButton InButton CButtonBButton
+InBody type BButton InBody TypeBButton
+InBody = type InBody =Type
+InBody = InBody STR=
+// global attribute
+InBody id BImg InBody idBImg
+InBody class BImg InBody ClassImg
+InBody style BImg InBody StyleBImg
+InBody e STR InBody e
+InBody e Type InBody e
+// submit
+InBody "submit" = InBody e
+// reset
+InBody "reset" = InBody e
+// button
+InBody "button" = InBody e
+
+InButton </button CButton InButton e
+InButton > BButton InButton e
+
+// a
+
+InBody <a CBody InBody BACBody
+InBody > BA InA CABA
+InBody href BA InBody HrefBA
+InBody = Href BA InBody =Href
+InBody "str" = InBody STR=
+InBody e STR InBody e
+InBody e = InBody e
+InBody e Href InBody e
+
+// global attribute
+InBody id BA InBody idBA
+InBody class BA InBody ClassBA
+InBody style BA InBody StyleBA
+
+InA </a CA InA e
+InA > BA InBody e

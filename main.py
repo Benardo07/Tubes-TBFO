@@ -54,9 +54,13 @@ def main():
         isInPetik = False
         isDalamKomentar = False
         closetag = False
+        strictString = False
         
         for char in file.read():
             if isInPetik and char != '"':
+                if strictString :
+                    if(char != ' '):
+                        temp += char
                 if(char != ' '):
                     tempIsi = 'str'  
             elif isDalamKomentar and char == ' ' :
@@ -89,19 +93,24 @@ def main():
                         temp=''
                     token.append(char)
                     closetag = True
-            elif  char == "=":
+            elif  char == "=" and not(closetag):
                 if(temp != ''):
+                    if(temp == 'method' or temp == 'type'):
+                        strictString = True
                     token.append(temp)
                     temp = ''
                 token.append(char)
             elif char == '"' and isInPetik:
-                temp += tempIsi
+                if(strictString):
+                    strictString = False
+                else:
+                    temp += tempIsi
                 temp += char
                 token.append(temp)
                 temp =''
                 tempIsi = 'nostr'
                 isInPetik = False
-            elif char == '"':
+            elif char == '"' and not(closetag):
                 temp += char
                 isInPetik = True
             elif  char != " " and char != "\n":
@@ -110,6 +119,8 @@ def main():
                 if(closetag) and char != '\n' and char != ' ':
                     temp  += char
                 elif not(closetag) and (temp != '') and not(isDalamKomentar):
+                    if(temp == 'method' or temp == 'type'):
+                        strictString = True
                     token.append(temp)
                     temp = ''
 

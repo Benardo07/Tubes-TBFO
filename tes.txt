@@ -1,5 +1,7 @@
 S <html Z S BHtml,Z
 S > BHtml InHTML CHtml,BHtml
+S <!-- Z S COM,Z
+S --> COM S e
 InHTML <head CHtml InHTML BHead,CHtml
 InHTML id BHead InHTML id,BHead
 InHTML class BHead InHTML Class,BHead
@@ -20,6 +22,9 @@ InHTML = Class InHTML =,Class
 InHTML e Class InHTML e
 InHTML = Style InHTML =,Style
 InHTML e Style InHTML e
+InHTML <!-- CHtml InHTML COM,CHtml
+InHTML --> COM InHTML e
+InHTML <!-- X InHTML COM,X
 InHead </head CHead InHead e
 InHead > BHead InHTML X
 InHead <title CHead InHead BTitle,CHead
@@ -69,6 +74,8 @@ InHead = Class InHead =,Class
 InHead e Class InHead e
 InHead = Style InHead =,Style
 InHead e Style InHead e
+InHead <!-- CHead InHead COM,CHead
+InHead --> COM InHead e
 InTitle </title CTitle InTitle e
 InTitle > BTitle InHead e
 InTitle str CTitle InTitle CTitle
@@ -82,6 +89,8 @@ InTitle <strong CTitle InTitle BStrong,CTitle
 InTitle > BStrong inStrong CStrong,BStrong
 InTitle <small CTitle InTitle BSmall,CTitle
 InTitle > BSmall inSmaBSmall CSmaBSmall,BSmall
+InTitle <!-- CTitle InTitle COM,CTitle
+InTitle --> COM InTitle e
 InScript str CScript InScript CScript
 InScript </script CScript InScript e
 InScript > BScript InHead e
@@ -95,6 +104,8 @@ InScript <strong CTitle InScript BStrong,CTitle
 InScript > BStrong inStrong CStrong,BStrong
 InScript <small CTitle InScript BSmall,CTitle
 InScript > BSmall inSmall CSmall,BSmall
+InScript <!-- CScript InScript COM,CScript
+InScript --> COM InScript e
 InBody <em CBody InBody BEm,CBody
 InBody > BEm inEm CEm,BEm
 InBody <b CBody InBody BB,CBody
@@ -156,6 +167,8 @@ InH1 <strong CH1 InH1 BStrong,CH1
 InH1 > BStrong inStrong CStrong,BStrong
 InH1 <small CH1 InH1 BSmall,CH1
 InH1 > BSmall inSmall CSmall,BSmall
+InH1 <!-- CH1 InH1 COM,CH1
+InH1 --> COM InH1 e
 InH2 str CH2 InH2 CH2
 InH2 </h2 CH2 InH2 e
 InH2 > BH2 InH2 e
@@ -172,6 +185,8 @@ InH2 <strong CH2 InH2 BStrong,CH2
 InH2 > BStrong inStrong CStrong,BStrong
 InH2 <small CH2 InH2 BSmall,CH2
 InH2 > BSmall inSmall CSmall,BSmall
+InH2 <!-- CH2 InH2 COM,Form
+InH2 --> COM InH2 e
 InH3 str CH3 InH3 CH3
 InH3 </h3 CH3 InH3 e
 InH3 > BH3 InH3 e
@@ -188,6 +203,8 @@ InH3 <strong CH3 InH3 BStrong,CH3
 InH3 > BStrong inStrong CStrong,BStrong
 InH3 <small CH3 InH3 BSmall,CH3
 InH3 > BSmall inSmall CSmall,BSmall
+InH3 <!-- CH3 InH3 COM,CH3
+InH3 --> COM InH3 e
 InH4 str CH4 InH4 CH4
 InH4 </h4 CH4 InH4 e
 InH4 > BH4 InH4 e
@@ -204,6 +221,8 @@ InH4 <strong CH4 InH4 BStrong,CH4
 InH4 > BStrong inStrong CStrong,BStrong
 InH4 <small CH4 InH4 BSmall,CH4
 InH4 > BSmall inSmall CSmall,BSmall
+InH4 <!-- CH4 InH4 COM,CH4
+InH4 --> COM InH4 e
 InH5 <em CH5 InH5 BEm,CH5
 InH5 > BEm inEm CEm,BEm
 InH5 <b CH5 InH5 BB,CH5
@@ -220,6 +239,8 @@ InH5 > BH5 InH5 e
 InH5 e CBody InBody CBody
 InH5 e Div InDiv Div
 InH5 e Form InDiv Form
+InH5 <!-- CH5 InH5 COM,CH5
+InH5 --> COM InH5 e
 InH6 str CH6 InH6 CH6
 InH6 </h6 CH6 InH6 e
 InH6 > BH6 InH6 e
@@ -236,6 +257,8 @@ InH6 <strong CH6 InH6 BStrong,CH6
 InH6 > BStrong inStrong CStrong,BStrong
 InH6 <small CH6 InH6 BSmall,CH6
 InH6 > BSmall inSmall CSmall,BSmall
+InH6 <!-- CH6 InH6 COM,CH6
+InH6 --> COM InH6 e
 InBody = id InBody =,id
 InBody "str" = InBody STR,=
 InBody "nostr" = InBody NOSTR,=
@@ -341,6 +364,8 @@ InA <strong CA InA BStrong,CA
 InA > BStrong inStrong CStrong,BStrong
 InA <small CA InA BSmall,CA
 InA > BSmall inSmall CSmall,BSmall
+InA <!-- CA InA COM,CA
+InA --> COM InA e
 InP str CP InP CP
 InP </p CP InP e
 InP > BP InP e
@@ -357,6 +382,8 @@ InP <strong CP InP BStrong,CP
 InP > BStrong inStrong CStrong,BStrong
 InP <small CP InP BSmall,CP
 InP > BSmall inSmall CSmall,BSmall
+InP <!-- CP InP COM,CP
+InP --> COM InP e
 inEm str CEm inEm CEm
 inEm </em CEm inEm e
 inEm > BEm inEm e
@@ -378,6 +405,8 @@ inEm e CTR InTR CTR
 inEm e CTD InTD CTD
 inEm e CTH InTH CTH
 inEm e CBody InBody CBody
+inEm <!-- CEm inEm COM,CEm
+inEm --> COM inEm e
 inB str CB inB CB
 inB </b CB inB e
 inB > BB inB e
@@ -399,6 +428,8 @@ inB e CTR InTR CTR
 inB e CTD InTD CTD
 inB e CTH InTH CTH
 inB e CBody InBody CBody
+inB <!-- CB inB COM,CB
+inB --> COM inB e
 inAbbr str CAbbr inAbbr CAbbr
 inAbbr </abbr CAbbr inAbbr e
 inAbbr > BAbbr inAbbr e
@@ -420,6 +451,8 @@ inAbbr e CTR InTR CTR
 inAbbr e CTD InTD CTD
 inAbbr e CTH InTH CTH
 inAbbr e CBody InBody CBody
+inAbbr <!-- CAbbr inAbbr COM,CAbbr
+inAbbr --> COM inAbbr e
 inSmall str CSmall inSmall CSmall
 inSmall </small CSmall inSmall e
 inSmall > BSmall inSmall e
@@ -441,6 +474,8 @@ inSmall e CTR InTR CTR
 inSmall e CTD InTD CTD
 inSmall e CTH InTH CTH
 inSmall e CBody InBody CBody
+inSmall <!-- CSmall inSmall COM,CSmall
+inSmall --> COM inSmall e
 inStrong str CStrong inStrong CStrong
 inStrong </strong CStrong inStrong e
 inStrong > BStrong inStrong e
@@ -462,6 +497,8 @@ inStrong e CTR InTR CTR
 inStrong e CTD InTD CTD
 inStrong e CTH InTH CTH
 inStrong e CBody InBody CBody
+inStrong <!-- CStrong inStrong COM,CStrong
+inStrong --> COM inStrong e
 InTable <tr CTable InTable BTR,CTable
 InTable id BTR InTable id,BTR
 InTable class BTR InTable Class,BTR
@@ -493,6 +530,8 @@ InTable > BTable InTable e
 InTable e CBody InBody CBody
 InTable e Div InDiv Div
 InTable e Form InDiv Form
+InTable <!-- CTable InTable COM,CTable
+InTable --> COM InTable e
 InTR </tr CTR InTR e
 InTR > BTR InTable e
 InTR <td CTR InTR BTD,CTR
@@ -526,6 +565,8 @@ InTR <strong CTR InTR BStrong,CTR
 InTR > BStrong inStrong CStrong,BStrong
 InTR <small CTR InTR BSmall,CTR
 InTR > BSmall inSmall CSmall,BSmall
+InTR <!-- CTR InTR COM,CTR
+InTR --> COM InTR e
 InTD str CTD InTD CTD
 InTD </td CTD InTD e
 InTD > BTD InTD e
@@ -541,6 +582,8 @@ InTD <strong CTD InTD BStrong,CTD
 InTD > BStrong inStrong CStrong,BStrong
 InTD <small CTD InTD BSmall,CTD
 InTD > BSmall inSmall CSmall,BSmall
+InTD <!-- CTD InTD COM,CTD
+InTD --> COM InTD e
 InTH str CTH InTH CTH
 InTH </th CTH InTH e
 InTH > BTH InTH e
@@ -556,6 +599,8 @@ InTH <strong CTH InTH BStrong,CTH
 InTH > BStrong inStrong CStrong,BStrong
 InTH <small CTH InTH BSmall,CTH
 InTH > BSmall inSmall CSmall,BSmall
+InTH <!-- CTH InTH COM,CTH
+InTH --> COM InTH e
 InButton str CButton InButton CButton
 InButton </button CButton InButton e
 InButton > BButton InButton e
@@ -572,6 +617,8 @@ InButton <strong CButton InButton BStrong,CButton
 InButton > BStrong inStrong CStrong,BStrong
 InButton <small CButton InButton BSmall,CButton
 InButton > BSmall inSmall CSmall,BSmall
+InButton <!-- CButton InButton COM,CButton
+InButton --> COM InButton e
 InDiv str Div InDiv Div
 InDiv str Form InDiv Form
 InDiv </div Div InDiv CDiv

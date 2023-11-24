@@ -55,6 +55,7 @@ def main():
         isDalamKomentar = False
         closetag = False
         strictString = False
+        firstMin = True
         
         for char in file.read():
             if isInPetik and char != '"':
@@ -66,10 +67,13 @@ def main():
             elif isDalamKomentar and char == ' ' :
                 temp = ''
             elif char == '-':
-                if isDalamKomentar:
+                if isDalamKomentar and firstMin:
+                    temp = ''
                     temp += char
+                    firstMin = False
                 else :
                     temp += char
+                    firstMin = True
                 if(temp == "<!--"):
                     isDalamKomentar = True
                     token.append(temp)
@@ -136,8 +140,6 @@ def main():
         print("Accepted")
     else:
         print("rejected")
-    
-
 
     # Rest of your script logic here
 

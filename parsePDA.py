@@ -25,7 +25,7 @@ def validate_tokens(tokens, transitions, start_state):
     stack = ['Z']  # Initialize the stack with the starting symbol
     now_state = start_state
 
-    tempState = ['InH1','InH2','InH3','InH4','InH5','InH6','InP','InTable']
+    tempState = ['InH1','InH2','InH3','InH4','InH5','InH6','InP','InTable','inEm','inStrong','inB','inSmall','inAbbr','InTD','InTH','InButton','InDiv','InForm','InA']
     for token in tokens:
         print("Processing token:", token)
         print("Current stack:", stack)
@@ -49,16 +49,15 @@ def validate_tokens(tokens, transitions, start_state):
                 if element != 'e':  # Assuming 'e' is the symbol for 'do nothing'
                     stack.append(element)
 
-            if ((stack[-1] == 'NOSTR') or (stack[-1] == 'STR') or (now_state == "inEm" and token == '>') or (now_state == "inStrong" and token == '>') or (now_state == "inB" and token == '>') or (now_state == "inSmall" and token == '>') or (now_state == "inAbbr" and token == '>') or (now_state == "InTD" and token == '>') or (now_state == "InTH" and token == '>') or (now_state == "InButton" and token == '>') or (prev_state == "InDiv" and token == '>') or (prev_state == "InForm" and token == '>'and prev_state==now_state) or (now_state == "inB" and token == '>') or (now_state == "inSmall" and token == '>') or (now_state == "inAbbr" and token == '>') or (now_state == "InTD" and token == '>') or (now_state == "InTH" and token == '>') or (now_state == "InButton" and token == '>') or (prev_state == "InDiv" and token == '>') or (prev_state == "InA" and token == '>'and prev_state==now_state) or ((prev_state in tempState) and token == '>')) :
+            if ((stack[-1] == 'NOSTR') or (stack[-1] == 'STR') or ((now_state in tempState) and  token == '>')):
                 while True:
-                    print(prev_state)
+                    print(now_state)
                     print(stack[-1])
-                    special_key = (prev_state, 'e', stack[-1] if stack else 'Z')
+                    special_key = (now_state, 'e', stack[-1] if stack else 'Z')
                     if special_key in transitions:
                         goToState, push_stack = transitions[special_key]
                         stack.pop()  # Pop the current top element
-                        prev_state = goToState
-                        now_state = prev_state
+                        now_state = goToState
                         for element in reversed(push_stack):
                             if element != 'e':
                                 stack.append(element)

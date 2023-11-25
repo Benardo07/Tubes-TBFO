@@ -49,14 +49,10 @@ def validate_tokens(tokens, PDA):
     stack = ['Z']  # Initialize the stack with the starting symbol
     now_state = start_state
 
-    tempState = ['InH1','InH2','InH3','InH4','InH5','InH6','InP','InTable','inEm','inStrong','inB','inSmall','inAbbr','InTD','InTH','InButton','InDiv','InForm','InA']
+    tempState = ['InH1','InH2','InH3','InH4','InH5','InH6','InP','InTable','inEm','inStrong','inB','inSmall','inAbbr','InTD','InTH','InButton','InDiv','InForm','InA','InScript']
     for token in tokens:
-        print("Processing token:", token)
-        print("Current stack:", stack)
-        print("Current state:", now_state)
-
         # Modify the key to include the top of the stack
-        key = (now_state, token, stack[-1] if stack else 'Z')  # Assuming 'Z' is the stack's empty symbol
+        key = (now_state, token[0], stack[-1] if stack else 'Z')  # Assuming 'Z' is the stack's empty symbol
 
         if key in transitions:
             goToState, push_stack = transitions[key]
@@ -72,7 +68,7 @@ def validate_tokens(tokens, PDA):
                 if element != 'e':  # Assuming 'e' is the symbol for 'do nothing'
                     stack.append(element)
 
-            if ((stack[-1] == 'NOSTR') or (stack[-1] == 'STR') or ((now_state in tempState) and  token == '>')):
+            if ((stack[-1] == 'NOSTR') or (stack[-1] == 'STR') or ((now_state in tempState) and  token[0] == '>')):
                 while True:
                     special_key = (now_state, 'e', stack[-1] if stack else 'Z')
                     if special_key in transitions:
@@ -85,14 +81,32 @@ def validate_tokens(tokens, PDA):
                     else:
                         break  # No more transitions for 'e' input
         else:
-            print("Invalid transition for token:", token)
-            return False  # Invalid transition
+            result = False
+            valid_transitions = [(k, v) for k, v in transitions.items() if k[0] == now_state and k[2] == stack[-1]]
+            if(token[0] == '<body' and stack[-1] == 'CHtml'):
+                 expected_inputs = set([k[1] for k, v in valid_transitions if k[1] != '<!--' and not k[1].startswith('</')])
+            else:
+                expected_inputs = set([k[1] for k, v in valid_transitions if len(v[1]) == 1 and v[1][0] != stack[-1]])
+
+            
+
+
+            # Extract possible input symbols that would lead to pushing 'e'
+            
+            
+            return result,token[0],token[1],stack[-1] ,expected_inputs # Invalid transition
 
     # The input is valid if all tokens are processed successfully
     if(stack[-1] == 'Z' and pda_type =='E'):
-        return True
+        result = True
+        return result,token[0],token[1],stack[-1],None
     else:
-        return False
+        result = False
+        valid_transitions = [(k, v) for k, v in transitions.items() if k[0] == now_state and k[2] == stack[-1]]
+
+        expected_inputs = set([k[1] for k, v in valid_transitions if len(v[1]) == 1 and v[1][0] != stack[-1]])
+
+        return result,token[0],token[1],stack[-1],expected_inputs
     
 
 def parseHTML(html_file):
@@ -105,80 +119,92 @@ def parseHTML(html_file):
         closetag = False
         strictString = False
         firstMin = True
+        line_number = 0
+        lines = []
+        temp_cadangan = ''
+        for line in file:
+            line_number += 1
+            lines.append(line)  # Store the current line
         
-        for char in file.read():
-            if isInPetik and char != '"':
-                if strictString :
-                    if(char != ' '):
-                        temp += char
-                if(char != ' '):
-                    tempIsi = 'str'  
-            elif isDalamKomentar and char == ' ' :
-                temp = ''
-            elif char == '-':
-                if isDalamKomentar and firstMin:
+            for char in line:
+
+
+                if isInPetik and char != '"':
+                    if strictString :
+                        if(char != ' '):
+                            temp += char
+                    if (char != ' '):
+                        tempIsi = 'str'  
+                    temp_cadangan += char
+                elif isDalamKomentar and char == ' ' :
                     temp = ''
-                    temp += char
-                    firstMin = False
-                else :
-                    temp += char
-                    firstMin = True
-                if(temp == "<!--"):
-                    isDalamKomentar = True
-                    token.append(temp)
-                    temp = ''             
-            elif char == '<':
-                if(temp != ''):
-                    token.append('str')
-                    temp=''
-                temp += char
-                closetag = False
-            elif char == '>' :
-                if(isDalamKomentar):
-                    temp += char
-                    if(temp == "-->"):
-                        token.append(temp)
+                elif char == '-':
+                    if isDalamKomentar and firstMin:
                         temp = ''
-                        isDalamKomentar = False
-                else : 
+                        temp += char
+                        firstMin = False
+                    else :
+                        temp += char
+                    if(temp == "<!--"):
+                        isDalamKomentar = True
+                        token.append((temp,line_number))
+                        temp = '' 
+                        firstMin = True            
+                elif char == '<':
                     if(temp != ''):
-                        token.append(temp)
+                        token.append(('str',line_number-1))
                         temp=''
-                    token.append(char)
-                    closetag = True
-            elif  char == "=" and not(closetag):
-                if(temp != ''):
-                    if(temp == 'method' or temp == 'type'):
-                        strictString = True
-                    token.append(temp)
-                    temp = ''
-                token.append(char)
-            elif char == '"' and isInPetik:
-                if(strictString):
-                    strictString = False
-                else:
-                    temp += tempIsi
-                temp += char
-                token.append(temp)
-                temp =''
-                tempIsi = 'nostr'
-                isInPetik = False
-            elif char == '"' and not(closetag):
-                temp += char
-                isInPetik = True
-            elif  char != " " and char != "\n":
-                temp += char
-            elif char == " ":
-                if(closetag) and char != '\n' and char != ' ':
-                    temp  += char
-                elif not(closetag) and (temp != '') and not(isDalamKomentar):
-                    if(temp == 'method' or temp == 'type'):
-                        strictString = True
-                    token.append(temp)
-                    temp = ''
+                    temp += char
+                    closetag = False
+                elif char == '>' :
+                    if(isDalamKomentar):
+                        temp += char
+                        if(temp == "-->"):
+                            token.append((temp,line_number))
+                            temp = ''
+                            isDalamKomentar = False
+                            closetag = True
+                    else : 
+                        if(temp != ''):
+                            token.append((temp,line_number))
+                            temp=''
+                        token.append((char,line_number))
+                        closetag = True
+                elif  char == "=" and not(closetag):
+                    if(temp != ''):
+                        if(temp == 'method' or temp == 'type'):
+                            strictString = True
+                        token.append((temp,line_number))
+                        temp = ''
+                    token.append((char,line_number))
+                elif char == '"' and isInPetik:
+                    if(strictString):
+                        strictString = False
+                    else:
+                        temp += tempIsi
+                    temp += char
+                    token.append((temp,line_number))
+                    temp =''
+                    tempIsi = 'nostr'
+                    isInPetik = False
+                    temp_cadangan = ''
+                elif char == '"' and not(closetag):
+                    temp_line = line_number
+                    temp += char
+                    isInPetik = True
+                elif  char != " " and char != "\n":
+                    temp += char
+                elif char == " ":
+                    if(closetag) and char != '\n' and char != ' ':
+                        temp  += char
+                    elif not(closetag) and (temp != '') and not(isDalamKomentar):
+                        if(temp == 'method' or temp == 'type'):
+                            strictString = True
+                        token.append((temp,line_number))
+                        temp = ''
 
     if(temp != '' and isInPetik):
-        token.append(temp)
+        token.append((temp_cadangan,temp_line))
         temp = ''
 
-    return token
+    return token,lines

@@ -43,7 +43,7 @@ InHead > BScript InScript CScript,BScript
 InHead src BScript InHead Source,BScript
 InHead = Source InHead =Source,Source
 InHead "str" =Source InHead STR,=Source
-InHead e STR InHead e
+InHead "nostr" =Source InHead NOSTR,=Source
 InHead e =Source InHead e
 InHead e Source InHead e
 InHead <link CHead InHead BLink,CHead

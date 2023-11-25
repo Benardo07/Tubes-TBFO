@@ -1,6 +1,6 @@
 S InHTML InHead InBody InH1 InH2  InButton InH6 InDiv InBody InTR InA InH4 InTH inAbbr inB inEm InH3 inSmall InTD InTitle inStrong InP InScript InH5 InTable
 </small, </h6 id <!-- "submit" <th </h5 "POST" <hr </h2 <br </head <h6 <title <form <p </p </form style "number" </h1 </body alt <abbr <html </b <tr <button class <script rel </h3 </html </abbr <div </table src > method <input action "text" </div <h5 "checkbox" </strong <b --> </a <small <table "password" "nostr" <img <link </tr <head <h4 href "reset" <h3 e str </script "email" </button "button" <td <em </td </em <a <strong "GET" = <h1 </h4 </title type </th "str" <body <h2
-CH2 BEm CH6 BTable BHtml id BH2 CA CB Z Src NOSTR Href BStrong CH4 COM CTD BP CAbbr CTitle BH3 CH3 BBody CBody Type CScript BH6 CH1 BTH BA CTable Div CEm CSmall BScript Form CStrong X Class BButton BB BForm CButton STR Rel ACT Img BDiv BInput BR BH5 BTD CP Style BAbbr BSmall BTR CDiv Source BH1 CForm BTitle =Rel CHead =Src METHOD BH4 CH5 = BHead type =Type Alt CTH HR CInput BLink CHtml CTR
+CH2 BEm CH6 BTable BHtml id BH2 CA CB Z Src NOSTR Href BStrong CH4 COM CTD BP CAbbr CTitle BH3 CH3 BBody CBody Type CScript BH6 CH1 BTH BA CTable Div CEm CSmall BScript Form CStrong X Class BButton BB BForm CButton STR Rel ACT Img BDiv BInput BR BH5 BTD CP Style BAbbr BSmall BTR CDiv Source BH1 CForm BTitle =Rel CHead =Src METHOD BH4 CH5 = BHead type =Type Alt CTH HR CInput BLink CHtml CTR =Source
 S
 Z
 F
@@ -41,10 +41,10 @@ InBody > BBody InHTML e
 InHead <script CHead InHead BScript,CHead
 InHead > BScript InScript CScript,BScript
 InHead src BScript InHead Source,BScript
-InHead = Source InHead =Src,Source
-InHead "str" =Src InHead STR,=Src
+InHead = Source InHead =Source,Source
+InHead "str" =Source InHead STR,=Source
 InHead e STR InHead e
-InHead e =Src InHead e
+InHead e =Source InHead e
 InHead e Source InHead e
 InHead <link CHead InHead BLink,CHead
 InHead rel BLink InHead Rel
@@ -100,7 +100,11 @@ InTitle <!-- CTitle InTitle COM,CTitle
 InTitle --> COM InTitle e
 InScript str CScript InScript CScript
 InScript </script CScript InScript e
-InScript > BScript InHead e
+InScript > BScript InScript e
+InScript e CHead InHead CHead
+InScript e CBody InBody CBody
+InScript e Div InDiv Div
+InScript e Form InDiv Form
 InScript <em CTitle InScript BEm,CTitle
 InScript > BEm inEm CEm,BEm
 InScript <b CTitle InScript BB,CTitle
@@ -113,6 +117,35 @@ InScript <small CTitle InScript BSmall,CTitle
 InScript > BSmall inSmall CSmall,BSmall
 InScript <!-- CScript InScript COM,CScript
 InScript --> COM InScript e
+InBody <link CBody InBody BLink,CBody
+InBody rel BLink InBody Rel
+InBody = Rel InBody =Rel,Rel
+InBody "str" =Rel InBody e
+InBody "nostr" =Rel InBody e
+InBody > Rel InBody e
+InBody href Rel InBody Href,Rel
+InBody href BLink InBody Href,BLink
+InBody = Href InBody =,Href
+InBody "str" = InBody STR,=
+InBody "nostr" = InBody NOSTR,=
+InBody e Href InBody e
+InBody id BLink InBody id,BLink
+InBody class BLink InBody Class,BLink
+InBody style BLink InBody Style,BLink
+InBody id Rel InBody id,Rel
+InBody class Rel InBody Class,Rel
+InBody style Rel InBody Style,Rel
+InBody <script CBody InBody BScript,CBody
+InBody > BScript InScript CScript,BScript
+InBody src BScript InBody Source,BScript
+InBody = Source InBody =Source,Source
+InBody "str" =Source InBody STR,=Source
+InBody e STR InBody e
+InBody e =Source InBody e
+InBody e Source InBody e
+InBody id BScript InBody id,BScript
+InBody class BScript InBody Class,BScript
+InBody style BScript InBody Style,BScript
 InBody <em CBody InBody BEm,CBody
 InBody > BEm inEm CEm,BEm
 InBody <b CBody InBody BB,CBody
@@ -788,3 +821,33 @@ InDiv id BDiv InDiv id,BDiv
 InDiv class BDiv InDiv Class,BDiv
 InDiv style BDiv InDiv Style,BDiv
 InDiv > BDiv InDiv Div
+InDiv <link CScript InDiv BLink,CScript
+InDiv <link Div InDiv BLink,Div
+InDiv rel BLink InDiv Rel
+InDiv = Rel InDiv =Rel,Rel
+InDiv "str" =Rel InDiv e
+InDiv "nostr" =Rel InDiv e
+InDiv > Rel InDiv e
+InDiv href Rel InDiv Href,Rel
+InDiv href BLink InDiv Href,BLink
+InDiv = Href InDiv =,Href
+InDiv "str" = InDiv STR,=
+InDiv "nostr" = InDiv NOSTR,=
+InDiv e Href InDiv e
+InDiv id BLink InDiv id,BLink
+InDiv class BLink InDiv Class,BLink
+InDiv style BLink InDiv Style,BLink
+InDiv id Rel InDiv id,Rel
+InDiv class Rel InDiv Class,Rel
+InDiv style Rel InDiv Style,Rel
+InDiv <script Div InDiv BScript,Div
+InDiv > BScript InScript CScript,BScript
+InDiv src BScript InDiv Source,BScript
+InDiv = Source InDiv =Source,Source
+InDiv "str" =Source InDiv STR,=Source
+InDiv e STR InDiv e
+InDiv e =Source InDiv e
+InDiv e Source InDiv e
+InDiv id BScript InDiv id,BScript
+InDiv class BScript InDiv Class,BScript
+InDiv style BScript InDiv Style,BScript

@@ -1,3 +1,10 @@
+S InHTML InHead InBody InH1 InH2  InButton InH6 InDiv InBody InTR InA InH4 InTH inAbbr inB inEm InH3 inSmall InTD InTitle inStrong InP InScript InH5 InTable
+</small, </h6 id <!-- "submit" <th </h5 "POST" <hr </h2 <br </head <h6 <title <form <p </p </form style "number" </h1 </body alt <abbr <html </b <tr <button class <script rel </h3 </html </abbr <div </table src > method <input action "text" </div <h5 "checkbox" </strong <b --> </a <small <table "password" "nostr" <img <link </tr <head <h4 href "reset" <h3 e str </script "email" </button "button" <td <em </td </em <a <strong "GET" = <h1 </h4 </title type </th "str" <body <h2
+CH2 BEm CH6 BTable BHtml id BH2 CA CB Z Src NOSTR Href BStrong CH4 COM CTD BP CAbbr CTitle BH3 CH3 BBody CBody Type CScript BH6 CH1 BTH BA CTable Div CEm CSmall BScript Form CStrong X Class BButton BB BForm CButton STR Rel ACT Img BDiv BInput BR BH5 BTD CP Style BAbbr BSmall BTR CDiv Source BH1 CForm BTitle =Rel CHead =Src METHOD BH4 CH5 = BHead type =Type Alt CTH HR CInput BLink CHtml CTR
+S
+Z
+F
+E
 S <html Z S BHtml,Z
 S > BHtml InHTML CHtml,BHtml
 S <!-- Z S COM,Z

@@ -441,7 +441,6 @@ inEm e Div InDiv Div
 inEm e Form InDiv Form
 inEm e CA InA CA
 inEm e CButton InButton CButton
-inEm e CInput InInput CInput
 inEm e CTR InTR CTR
 inEm e CTD InTD CTD
 inEm e CTH InTH CTH
@@ -464,7 +463,6 @@ inB e Div InDiv Div
 inB e Form InDiv Form
 inB e CA InA CA
 inB e CButton InButton CButton
-inB e CInput InInput CInput
 inB e CTR InTR CTR
 inB e CTD InTD CTD
 inB e CTH InTH CTH
@@ -487,7 +485,6 @@ inAbbr e Div InDiv Div
 inAbbr e Form InDiv Form
 inAbbr e CA InA CA
 inAbbr e CButton InButton CButton
-inAbbr e CInput InInput CInput
 inAbbr e CTR InTR CTR
 inAbbr e CTD InTD CTD
 inAbbr e CTH InTH CTH
@@ -510,7 +507,6 @@ inSmall e Div InDiv Div
 inSmall e Form InDiv Form
 inSmall e CA InA CA
 inSmall e CButton InButton CButton
-inSmall e CInput InInput CInput
 inSmall e CTR InTR CTR
 inSmall e CTD InTD CTD
 inSmall e CTH InTH CTH
@@ -533,7 +529,6 @@ inStrong e Div InDiv Div
 inStrong e Form InDiv Form
 inStrong e CA InA CA
 inStrong e CButton InButton CButton
-inStrong e CInput InInput CInput
 inStrong e CTR InTR CTR
 inStrong e CTD InTD CTD
 inStrong e CTH InTH CTH
@@ -545,16 +540,6 @@ InTable id BTR InTable id,BTR
 InTable class BTR InTable Class,BTR
 InTable style BTR InTable Style,BTR
 InTable > BTR InTR CTR,BTR
-InTable <td CTable InTable BTD,CTable
-InTable id BTD InTable id,BTD    
-InTable class BTD InTable Class,BTD
-InTable style BTD InTable Style,BTD
-InTable > BTD InTD CTD,BTD
-InTable <th CTable InTable BTH,CTable
-InTable id BTH InTable id,BTH
-InTable class BTH InTable Class,BTH
-InTable style BTH InTable Style,BTH
-InTable > BTH InTH CTH,BTH
 InTable = id InTable =,id
 InTable "str" = InTable STR,=
 InTable "nostr" = InTable NOSTR,=

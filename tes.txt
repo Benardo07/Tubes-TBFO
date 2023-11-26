@@ -851,3 +851,5 @@ InDiv e Source InDiv e
 InDiv id BScript InDiv id,BScript
 InDiv class BScript InDiv Class,BScript
 InDiv style BScript InDiv Style,BScript
+F <!-- Z F COM,Z
+F --> COM F e

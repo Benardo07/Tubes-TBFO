@@ -45,7 +45,7 @@ def main():
     if matching_transitions:
         print("Matching Transitions:")
         for t in matching_transitions:
-            print(f"Input: {t.input_symbol}, Stack Top: {t.stack_top}, Push: {t.push_symbol}")
+            print(f"{t.input_symbol},{t.stack_top}/{t.push_symbol}")
     else:
         print("No matching transitions found.")
 

@@ -81,6 +81,9 @@ InHead style BTitle InHead Style,BTitle
 InHead id BLink InHead id,BLink
 InHead class BLink InHead Class,BLink
 InHead style BLink InHead Style,BLink
+InHead id Rel InHead id,Rel
+InHead class Rel InHead Class,Rel
+InHead style Rel InHead Style,Rel
 InHead id BScript InHead id,BScript
 InHead class BScript InHead Class,BScript
 InHead style BScript InHead Style,BScript
@@ -358,6 +361,12 @@ InBody alt Src InBody Alt,Src
 InBody alt Img InBody Alt,Img
 InBody = Alt InBody =,Alt
 InBody e Alt InBody e
+InBody id Img InBody id,Img
+InBody class Img InBody Class,Img
+InBody style Img InBody Style,Img
+InBody id Src InBody id,Src
+InBody class Src InBody Class,Src
+InBody style Src InBody Style,Src
 InBody <input CBody InBody BInput,CBody
 InBody id BInput InBody id,BInput
 InBody class BInput InBody Class,BInput
@@ -757,6 +766,12 @@ InDiv alt Src InDiv Alt,Src
 InDiv alt Img InDiv Alt,Img
 InDiv = Alt InDiv =,Alt
 InDiv e Alt InDiv e
+InDiv id Img InDiv id,Img
+InDiv class Img InDiv Class,Img
+InDiv style Img InDiv Style,Img
+InDiv id Src InDiv id,Src
+InDiv class Src InDiv Class,Src
+InDiv style Src InDiv Style,Src
 InDiv <input Div InDiv BInput,Div
 InDiv <input Form InDiv BInput,Form
 InDiv id BInput InDiv id,BInput
@@ -806,7 +821,7 @@ InDiv id BDiv InDiv id,BDiv
 InDiv class BDiv InDiv Class,BDiv
 InDiv style BDiv InDiv Style,BDiv
 InDiv > BDiv InDiv Div
-InDiv <link CScript InDiv BLink,CScript
+InDiv <link Form InDiv BLink,Form
 InDiv <link Div InDiv BLink,Div
 InDiv rel BLink InDiv Rel
 InDiv = Rel InDiv =Rel,Rel

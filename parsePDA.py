@@ -1,3 +1,13 @@
+
+RED = "\033[31m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
+RESET = "\033[0m"
+BLUE = "\033[34m"   # Blue text
+MAGENTA = "\033[35m" # Magenta text
+CYAN = "\033[36m"    # Cyan text
+WHITE = "\033[37m"   # White text
+
 def parse(file_path):
     PDA = {
         "all_states": [],
@@ -39,7 +49,6 @@ def parse(file_path):
 
     return PDA
 
-transition = parse("tes.txt")
 
 
 def validate_tokens(tokens, PDA):
@@ -67,7 +76,6 @@ def validate_tokens(tokens, PDA):
             for element in reversed(push_stack):
                 if element != 'e':  # Assuming 'e' is the symbol for 'do nothing'
                     stack.append(element)
-
             if ((stack[-1] == 'NOSTR') or (stack[-1] == 'STR') or ((now_state in tempState) and  token[0] == '>')):
                 while True:
                     special_key = (now_state, 'e', stack[-1] if stack else 'Z')
@@ -85,6 +93,8 @@ def validate_tokens(tokens, PDA):
             valid_transitions = [(k, v) for k, v in transitions.items() if k[0] == now_state and k[2] == stack[-1]]
             if(token[0] == '<body' and stack[-1] == 'CHtml'):
                  expected_inputs = set([k[1] for k, v in valid_transitions if k[1] != '<!--' and not k[1].startswith('</')])
+            elif (stack[-1] == "id" or stack[-1] == "Class" or stack[-1] == "Style" or stack[-1] == "id" or stack[-1] == "Href" or stack[-1] == 'Source' or stack[-1] == 'Rel'):
+                expected_inputs = "="
             else:
                 expected_inputs = set([k[1] for k, v in valid_transitions if len(v[1]) == 1 and v[1][0] != stack[-1]])
 
@@ -92,9 +102,11 @@ def validate_tokens(tokens, PDA):
 
 
             # Extract possible input symbols that would lead to pushing 'e'
-            
-            
-            return result,token[0],token[1],stack[-1] ,expected_inputs # Invalid transition
+            if(stack[-1] == '=' and stack[-2] != 'BForm'):
+                expected_inputs = '"'
+                return result,'"str"',token[1],stack[-1],expected_inputs
+            else:
+                return result,token[0],token[1],stack[-1] ,expected_inputs # Invalid transition
 
     # The input is valid if all tokens are processed successfully
     if(stack[-1] == 'Z' and pda_type =='E'):
@@ -107,6 +119,10 @@ def validate_tokens(tokens, PDA):
         expected_inputs = set([k[1] for k, v in valid_transitions if len(v[1]) == 1 and v[1][0] != stack[-1]])
 
         return result,token[0],token[1],stack[-1],expected_inputs
+        
+        
+    
+    
     
 
 def parseHTML(html_file):
@@ -208,3 +224,29 @@ def parseHTML(html_file):
         temp = ''
 
     return token,lines
+
+
+def output_to_terminal(validate,inputError,lineNumber,stack_symbol,expected,lineHTML,PDA):
+    if(validate):
+        print()
+        print(GREEN + "ACCEPTED" +YELLOW + " --Your HTML file has been validated True" + RESET)
+        print()
+
+    else:
+        print()
+        print(RED + "REJECTED" + RESET)
+        print(RED + "Error in Line number " + str(lineNumber) + RESET)
+        print(YELLOW +"      Line " + str(lineNumber) + " : ",end="")
+        print(YELLOW + lineHTML[lineNumber-1] + RESET)
+
+        if not(inputError in PDA["input_symbols"]):
+            print(BLUE + "Invalid syntax at " + GREEN + inputError + RESET)
+        elif (inputError == 'str' and stack_symbol != 'COM'):
+            print(BLUE + "Invalid string " + WHITE + "--" + YELLOW + " String can't be there !!" + RESET)
+        elif(stack_symbol == 'COM'):
+            print(BLUE + "Expected this following elements: " + GREEN + "-->" + BLUE + " after " + YELLOW + inputError + RESET)  
+        else:
+            if expected:
+                expected_inputs = ", ".join(expected)
+                print(BLUE + "Expected this following elements: " + GREEN +expected_inputs + BLUE + " before " + YELLOW + inputError + RESET)
+                print()

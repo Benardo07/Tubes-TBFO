@@ -3,6 +3,7 @@ import sys
 from parsePDA import parse
 from parsePDA import validate_tokens
 from parsePDA import parseHTML
+from parsePDA import output_to_terminal
 
 RED = "\033[31m"
 GREEN = "\033[32m"
@@ -42,24 +43,6 @@ PDA =  parse(text_file)
 
 validate, inputError, lineNumber ,stack_symbol,expected = validate_tokens(token,PDA)
 
-if(validate):
-    print()
-    print(GREEN + "ACCEPTED" + RESET)
-    print()
-
-else:
-    print()
-    print(RED + "REJECTED" + RESET)
-    print(RED + "Error in Line number " + str(lineNumber) + RESET)
-    print(YELLOW +"      Line " + str(lineNumber) + " : ",end="")
-    print(YELLOW + lineHTML[lineNumber-1] + RESET)
-
-    if not(inputError in PDA["input_symbols"]):
-        print(BLUE + "Invalid syntax at " + GREEN + inputError + RESET)
-    else:
-        if expected:
-            expected_inputs = ", ".join(expected)
-            print(BLUE + "Expected this following elements: " + GREEN +expected_inputs + RESET)
-            print()
+output_to_terminal(validate,inputError,lineNumber,stack_symbol,expected,lineHTML,PDA)
 
 

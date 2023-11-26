@@ -441,7 +441,6 @@ inEm e Div InDiv Div
 inEm e Form InDiv Form
 inEm e CA InA CA
 inEm e CButton InButton CButton
-inEm e CTR InTR CTR
 inEm e CTD InTD CTD
 inEm e CTH InTH CTH
 inEm e CBody InBody CBody
@@ -463,7 +462,6 @@ inB e Div InDiv Div
 inB e Form InDiv Form
 inB e CA InA CA
 inB e CButton InButton CButton
-inB e CTR InTR CTR
 inB e CTD InTD CTD
 inB e CTH InTH CTH
 inB e CBody InBody CBody
@@ -485,7 +483,6 @@ inAbbr e Div InDiv Div
 inAbbr e Form InDiv Form
 inAbbr e CA InA CA
 inAbbr e CButton InButton CButton
-inAbbr e CTR InTR CTR
 inAbbr e CTD InTD CTD
 inAbbr e CTH InTH CTH
 inAbbr e CBody InBody CBody
@@ -507,7 +504,6 @@ inSmall e Div InDiv Div
 inSmall e Form InDiv Form
 inSmall e CA InA CA
 inSmall e CButton InButton CButton
-inSmall e CTR InTR CTR
 inSmall e CTD InTD CTD
 inSmall e CTH InTH CTH
 inSmall e CBody InBody CBody
@@ -529,7 +525,6 @@ inStrong e Div InDiv Div
 inStrong e Form InDiv Form
 inStrong e CA InA CA
 inStrong e CButton InButton CButton
-inStrong e CTR InTR CTR
 inStrong e CTD InTD CTD
 inStrong e CTH InTH CTH
 inStrong e CBody InBody CBody
@@ -581,16 +576,6 @@ InTR = Class InTR =,Class
 InTR e Class InTR e
 InTR = Style InTR =,Style
 InTR e Style InTR e
-InTR <em CTR InTR BEm,CTR
-InTR > BEm inEm CEm,BEm
-InTR <b CTR InTR BB,CTR
-InTR > BB inB CB,BB
-InTR <abbr CTR InTR BAbbr,CTR
-InTR > BAbbr inAbbr CAbbr,BAbbr
-InTR <strong CTR InTR BStrong,CTR
-InTR > BStrong inStrong CStrong,BStrong
-InTR <small CTR InTR BSmall,CTR
-InTR > BSmall inSmall CSmall,BSmall
 InTR <!-- CTR InTR COM,CTR
 InTR --> COM InTR e
 InTD str CTD InTD CTD

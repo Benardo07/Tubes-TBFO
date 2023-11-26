@@ -49,7 +49,7 @@ Note ** : pastikan file html berada di root yang sama dengan main.py
 
 ## Pembagian Kerja
 | NIM |Nama |Pembagian Kerja|
-|-----|-----|
+|-----|-----|---------------|
 |13522016|Zachary Samuel T|membantu membuat PDA transition|
 |13522019|Wilson Yusda|Laporan, membantu membuat PDA transition, Diagram PDA, states.py (pencocok initial dan final state)|
 |13522055|Benardo|PDA , parser html , parser PDA ke struktur data dictionary, merancang seluruh transition function pada PDA, laporan|

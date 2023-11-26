@@ -27,7 +27,7 @@ Dibutuhkan sebuah program pendeteksi error untuk HTML. Oleh sebab itu, implement
 Pertama-tama Clone repository terlebih dahulu
 ```
 git clone https://github.com/Benardo07/Tubes-TBFO.git
-
+```
 Setelah berhasil di clone , buka folder hasil clone dalam vscode.
 Pastikan anda berapa di root program 
 Untuk menjalankan program , anda dapat menginput sesuai dengan format di bawah ini

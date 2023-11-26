@@ -26,8 +26,8 @@ def find_matching_transitions(transitions, initial_state, final_state):
 def print_all_unique_states(transitions):
     all_states = set()
     for transition in transitions:
-        all_states.add(transition.initial_state)
-        all_states.add(transition.final_state)
+        all_states.add(transition.stack_top)
+        # all_states.add(transition.final_state)
 
     print("All Unique States:", ', '.join(sorted(all_states)))
 
